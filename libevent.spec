@@ -3,13 +3,13 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.3b
+Version:	1.3c
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
-#Source1:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz.sig
+Source1:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz.sig
 Patch0:		libevent-version-info-only.diff
 BuildRequires:	autoconf2.5
 BuildRequires:	libtool
