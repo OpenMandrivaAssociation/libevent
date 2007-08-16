@@ -1,17 +1,17 @@
 %define	major 1
 %define libname	%mklibname event %{major}
+%define develname %mklibname -d event
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.3c
+Version:	1.3d
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
-Source1:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz.sig
 Patch0:		libevent-version-info-only.diff
-BuildRequires:	autoconf2.5
+BuildRequires:	autoconf
 BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
@@ -33,13 +33,14 @@ libevent is meant to replace the asynchronous event loop found in event driven
 network servers. An application just needs to call event_dispatch() and can
 then add or remove events dynamically without having to change the event loop.
 
-%package -n	%{libname}-devel
+%package -n	%{develname}
 Summary:	Static library and header files for the libevent library
 Group:		Development/C
 Provides:	%{name}-devel = %{version}
 Requires:	%{libname} = %{version}
+Obsoletes:	%{libname}-devel
 
-%description -n	%{libname}-devel
+%description -n	%{develname}
 The libevent API provides a mechanism to execute a callback function when a
 specific event occurs on a file descriptor or after a timeout has been reached.
 libevent is meant to replace the asynchronous event loop found in event driven
@@ -51,7 +52,7 @@ to compile applications such as stegdetect, etc.
 
 %prep
 
-%setup -q -n %{name}-%{version}
+%setup -q
 %patch0 -p0
 
 %build
@@ -88,14 +89,12 @@ rm -f %{buildroot}%{_bindir}/event_rpcgen.py
 %files -n %{libname}
 %defattr(-,root,root)
 %doc README event_rpcgen.py
-%{_libdir}/*.so.*
+%{_libdir}/*.so.%{major}*
 
-%files -n %{libname}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/*.a
 %{_libdir}/*.la
 %{_mandir}/man3/*
-
-
