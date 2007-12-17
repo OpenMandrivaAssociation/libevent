@@ -13,7 +13,6 @@ Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
 Patch0:		libevent-version-info-only.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
 
 %description
 The libevent API provides a mechanism to execute a callback function when a
