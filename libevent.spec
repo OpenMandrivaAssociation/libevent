@@ -1,15 +1,16 @@
-%define	major 1
+%define betaver beta
+%define	major 2
 %define libname	%mklibname event %{major}
 %define develname %mklibname -d event
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.3e
-Release:	%mkrel 1
+Version:	1.4.1
+Release:	%mkrel -c %betaver 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
-Source0:	http://www.monkey.org/~provos/%{name}-%{version}.tar.gz
+Source0:	http://www.monkey.org/~provos/%{name}-%{version}-%{betaver}.tar.gz
 Patch0:		libevent-version-info-only.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
@@ -51,8 +52,8 @@ to compile applications such as stegdetect, etc.
 
 %prep
 
-%setup -q
-%patch0 -p0
+%setup -q -n %name-%version-%betaver
+#%patch0 -p0
 
 %build
 export WANT_AUTOCONF_2_5=1
