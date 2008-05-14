@@ -1,20 +1,19 @@
-%define betaver beta
 %define	major 2
 %define libname	%mklibname event %{major}
 %define develname %mklibname -d event
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.4.1
-Release:	%mkrel -c %betaver 1
+Version:	1.4.4
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
-Source0:	http://www.monkey.org/~provos/%{name}-%{version}-%{betaver}.tar.gz
+Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 Patch0:		libevent-version-info-only.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
-BuildRoot:	%{_tmppath}/%{name}-%{version}-root
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The libevent API provides a mechanism to execute a callback function when a
@@ -38,8 +37,9 @@ then add or remove events dynamically without having to change the event loop.
 Summary:	Static library and header files for the libevent library
 Group:		Development/C
 Provides:	%{name}-devel = %{version}
+Provides:	lib%{name}-devel = %{version}
 Requires:	%{libname} = %{version}
-Obsoletes:	%{libname}-devel
+Obsoletes:	%{mklibname -d event 2}
 
 %description -n	%{develname}
 The libevent API provides a mechanism to execute a callback function when a
@@ -53,8 +53,8 @@ to compile applications such as stegdetect, etc.
 
 %prep
 
-%setup -q -n %name-%version-%betaver
-#%patch0 -p0
+%setup -q -n %{name}-%{version}-stable
+%patch0 -p0
 
 %build
 export WANT_AUTOCONF_2_5=1
@@ -73,7 +73,7 @@ pushd test
 popd
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %makeinstall_std
 
@@ -85,7 +85,7 @@ rm -f %{buildroot}%{_bindir}/event_rpcgen.py
 %postun -n %{libname} -p /sbin/ldconfig
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files -n %{libname}
 %defattr(-,root,root)
