@@ -80,9 +80,13 @@ rm -rf %{buildroot}
 # don't enforce python deps here
 rm -f %{buildroot}%{_bindir}/event_rpcgen.py
 
+%if %mdkversion < 200900
 %post -n %{libname} -p /sbin/ldconfig
+%endif
 
+%if %mdkversion < 200900
 %postun -n %{libname} -p /sbin/ldconfig
+%endif
 
 %clean
 rm -rf %{buildroot}
