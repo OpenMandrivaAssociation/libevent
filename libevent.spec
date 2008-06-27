@@ -1,15 +1,18 @@
+%define _disable_ld_no_undefined 1
+
 %define	major 2
 %define libname	%mklibname event %{major}
 %define develname %mklibname -d event
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.4.4
+Version:	1.4.5
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
+Source1:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz.sig
 Patch0:		libevent-version-info-only.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
