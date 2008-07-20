@@ -68,7 +68,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %configure2_5x
 
-%make
+make
 
 %check
 pushd test
