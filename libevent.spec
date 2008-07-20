@@ -1,5 +1,3 @@
-%define _disable_ld_no_undefined 1
-
 %define	major 2
 %define libname	%mklibname event %{major}
 %define develname %mklibname -d event
@@ -7,13 +5,14 @@
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
 Version:	1.4.5
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
 Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 Source1:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz.sig
 Patch0:		libevent-version-info-only.diff
+Patch1:		libevent-linkage_fix.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -58,6 +57,7 @@ to compile applications such as stegdetect, etc.
 
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p0
+%patch1 -p0
 
 %build
 export WANT_AUTOCONF_2_5=1
