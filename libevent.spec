@@ -4,8 +4,8 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.4.5
-Release:	%mkrel 2
+Version:	1.4.6
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
