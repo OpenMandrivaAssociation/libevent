@@ -4,7 +4,7 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	1.4.6
+Version:	1.4.7
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
