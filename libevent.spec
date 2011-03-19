@@ -5,7 +5,7 @@
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
 Version:	2.0.10
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
@@ -41,7 +41,6 @@ then add or remove events dynamically without having to change the event loop.
 Summary:	Static library and header files for the libevent library
 Group:		Development/C
 Provides:	%{name}-devel = %{version}
-Provides:	lib%{name}-devel = %{version}
 Requires:	%{libname} = %{version}
 Obsoletes:	%{mklibname -d event 2}
 
