@@ -71,6 +71,7 @@ make
 
 # provide man pages
 make doxygen
+rm -f doxygen/man/man3/{major,minor,error,free}.3
 
 #%%check
 #pushd test
