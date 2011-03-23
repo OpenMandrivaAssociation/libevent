@@ -60,9 +60,9 @@ to compile applications such as stegdetect, etc.
 %patch0 -p0
 %patch1 -p0
 
-%build
 autoreconf -fi
 
+%build
 export CFLAGS="%{optflags} -fPIC"
 
 %configure2_5x
