@@ -67,7 +67,7 @@ export CFLAGS="%{optflags} -fPIC"
 
 %configure2_5x
 
-make
+%make
 
 # provide man pages
 make doxygen
