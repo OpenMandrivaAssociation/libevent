@@ -5,7 +5,7 @@
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
 Version:	2.0.11
-Release:	%mkrel 1
+Release:	%mkrel 2
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
@@ -89,6 +89,8 @@ rm -f %{buildroot}%{_bindir}/event_rpcgen.py
 # provide man pages
 install -d %{buildroot}%{_mandir}/man3
 install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
+
+mv %{buildroot}/%{_mandir}/man3/{,libevent.}deprecated.3*
 
 %clean
 rm -rf %{buildroot}
