@@ -90,7 +90,7 @@ rm -f %{buildroot}%{_bindir}/event_rpcgen.py
 install -d %{buildroot}%{_mandir}/man3
 install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 
-mv %{buildroot}/%{_mandir}/man3/{,libevent.}deprecated.3*
+(cd %{buildroot}/%{_mandir}/man3/; F=`ls deprecated.3*`; mv $F libevent.$F)
 
 %clean
 rm -rf %{buildroot}
