@@ -4,8 +4,8 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	2.0.11
-Release:	%mkrel 2
+Version:	2.0.12
+Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
@@ -13,6 +13,7 @@ Source0:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz
 Source1:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz.asc
 Patch0:		libevent-version-info-only.diff
 Patch1:		libevent-linkage_fix.diff
+Patch2:		libevent-ldflags.diff
 BuildRequires:	autoconf
 BuildRequires:	libtool
 BuildRequires:	openssl-devel
@@ -59,6 +60,7 @@ to compile applications such as stegdetect, etc.
 %setup -q -n %{name}-%{version}-stable
 %patch0 -p0
 %patch1 -p0
+%patch2 -p0
 
 autoreconf -fi
 
