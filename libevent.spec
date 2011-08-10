@@ -4,7 +4,7 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	2.0.12
+Version:	2.0.13
 Release:	%mkrel 1
 Group:		System/Libraries
 License:	BSD
@@ -61,6 +61,9 @@ to compile applications such as stegdetect, etc.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
+
+# bork
+perl -pi -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
 
 autoreconf -fi
 
