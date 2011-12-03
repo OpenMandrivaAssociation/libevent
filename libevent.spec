@@ -39,7 +39,7 @@ then add or remove events dynamically without having to change the event loop.
 %package -n	%{develname}
 Summary:	Static library and header files for the libevent library
 Group:		Development/C
-Provides:	%{name}-devel = %{version}
+Provides:	%{name}-devel = %{version}-%{release}
 Requires:	%{libname} = %{version}
 Obsoletes:	%{mklibname -d event 2}
 
