@@ -5,7 +5,7 @@
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
 Version:	2.0.14
-Release:	%mkrel 1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 URL:		http://www.monkey.org/~provos/libevent/
@@ -14,11 +14,9 @@ Source1:	http://www.monkey.org/~provos/%{name}-%{version}-stable.tar.gz.asc
 Patch0:		libevent-version-info-only.diff
 Patch1:		libevent-linkage_fix.diff
 Patch2:		libevent-ldflags.diff
-BuildRequires:	autoconf
-BuildRequires:	libtool
+BuildRequires:	autoconf automake libtool
 BuildRequires:	openssl-devel
 BuildRequires:	doxygen
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 The libevent API provides a mechanism to execute a callback function when a
@@ -97,19 +95,15 @@ install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 
 (cd %{buildroot}/%{_mandir}/man3/; F=`ls deprecated.3*`; mv $F libevent.$F)
 
-%clean
-rm -rf %{buildroot}
+# cleanup
+rm -f %{buildroot}%{_libdir}/*.*a
 
 %files -n %{libname}
-%defattr(-,root,root)
 %doc README event_rpcgen.py
 %{_libdir}/*.so.%{major}*
 
 %files -n %{develname}
-%defattr(-,root,root)
 %{_includedir}/*
 %{_libdir}/*.so
-%{_libdir}/*.a
-%{_libdir}/*.la
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/*
