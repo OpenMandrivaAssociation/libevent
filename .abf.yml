@@ -1,3 +1,3 @@
 sources:
-  "libevent-2.0.20-stable.tar.gz:"	20bb4a1a296ac93c08dfc32ae19ab874cab67a0c
-  "libevent-2.0.20-stable.tar.gz.asc:"	345f44be65ba54eaf820e70bcf265f1e37949e59
+  "libevent-2.0.19-stable.tar.gz": 28c109190345ce5469add8cf3f45c5dd57fe2a85
+  libevent-2.0.21-stable.tar.gz: 3e6674772eb77de24908c6267c698146420ab699
