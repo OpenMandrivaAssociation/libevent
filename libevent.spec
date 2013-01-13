@@ -14,6 +14,7 @@ Source1:	https://github.com/downloads/libevent/libevent/%{name}-%{version}-stabl
 Patch0:		libevent-version-info-only.diff
 Patch1:		libevent-linkage_fix.diff
 Patch2:		libevent-ldflags.diff
+Patch3:		libevent-2.0.21-automake-1.13.patch
 BuildRequires:	autoconf automake libtool
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	doxygen
@@ -57,10 +58,12 @@ to compile applications such as stegdetect, etc.
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
+%patch3 -p1 -b .am13~
 
 # bork
 perl -pi -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
 
+mv -f configure.in configure.ac
 autoreconf -fi
 
 %build
