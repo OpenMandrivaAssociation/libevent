@@ -10,7 +10,7 @@
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
 Version:	2.0.21
-Release:	14
+Release:	15
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.monkey.org/~provos/libevent/
