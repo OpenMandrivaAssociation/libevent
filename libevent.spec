@@ -1,5 +1,5 @@
-%define api	2.0
-%define major	5
+%define api	2.1
+%define major	6
 %define libname	%mklibname event %{api} %{major}
 %define	libcore %mklibname event_core %{api} %{major}
 %define	libextra %mklibname event_extra %{api} %{major}
@@ -9,17 +9,15 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	2.0.21
-Release:	16
+Version:	2.1.8
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.monkey.org/~provos/libevent/
-Source0:	http://cloud.github.com/downloads/libevent/libevent/%{name}-%{version}-stable.tar.gz
-Source1:	http://cloud.github.com/downloads/libevent/libevent/%{name}-%{version}-stable.tar.gz.asc
+Source0:	http://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
 #Patch0:		libevent-version-info-only.diff
 Patch1:		libevent-linkage_fix.diff
 #Patch2:		libevent-ldflags.diff
-Patch3:		libevent-2.0.21-automake-1.13.patch
 BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(openssl)
@@ -90,7 +88,6 @@ This package contains the development files for %{name}.
 # bork
 sed -i -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
 
-mv -f configure.in configure.ac
 autoreconf -fi
 
 %build
@@ -128,7 +125,6 @@ install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 %{_libdir}/libevent_pthreads-%{api}.so.%{major}*
 
 %files -n %{devname}
-%doc README
 %{_bindir}/event_rpcgen.py
 %{_includedir}/*
 %{_libdir}/*.so
