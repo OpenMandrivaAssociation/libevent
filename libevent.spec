@@ -9,8 +9,8 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	2.1.8
-Release:	3
+Version:	2.1.10
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.monkey.org/~provos/libevent/
@@ -82,8 +82,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package contains the development files for %{name}.
 
 %prep
-%setup -qn %{name}-%{version}-stable
-%apply_patches
+%setup -n %{name}-%{version}-stable -p1
 
 # bork
 sed -i -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
@@ -92,16 +91,16 @@ autoreconf -fi
 
 %build
 export CFLAGS="%{optflags} -fPIC"
-%configure2_5x --disable-static
+%configure --disable-static
 
-%make
+%make_build
 
 # provide man pages
 make doxygen
 rm -f doxygen/man/man3/{major,minor,error,free}.3
 
 %install
-%makeinstall_std
+%make_install
 
 # provide man pages
 install -d %{buildroot}%{_mandir}/man3
