@@ -82,7 +82,7 @@ Provides:	%{name}-devel = %{version}-%{release}
 This package contains the development files for %{name}.
 
 %prep
-%setup -n %{name}-%{version}-stable -p1
+%autosetup -n %{name}-%{version}-stable -p1
 
 # bork
 sed -i -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
