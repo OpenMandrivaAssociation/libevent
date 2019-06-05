@@ -1,0 +1,20 @@
+diff -Naur libevent-2.1.10-stable/Makefile.am libevent-2.1.10-stable.tpg/Makefile.am
+--- libevent-2.1.10-stable/Makefile.am	2019-05-25 21:15:35.000000000 +0000
++++ libevent-2.1.10-stable.tpg/Makefile.am	2019-06-05 14:04:17.944137885 +0000
+@@ -252,14 +252,14 @@
+ MAYBE_CORE = libevent_core.la
+ else
+ NO_UNDEFINED =
+-MAYBE_CORE =
++MAYBE_CORE = libevent_core.la
+ endif
+ 
+ AM_CFLAGS = $(LIBEVENT_CFLAGS)
+ AM_CPPFLAGS = -I$(srcdir)/compat -I./include -I$(srcdir)/include $(SYS_INCLUDES) $(LIBEVENT_CPPFLAGS)
+ AM_LDFLAGS = $(LIBEVENT_LDFLAGS)
+ 
+-GENERIC_LDFLAGS = -version-info $(VERSION_INFO) $(RELEASE) $(NO_UNDEFINED) $(AM_LDFLAGS)
++GENERIC_LDFLAGS = -version-info $(VERSION_INFO) $(RELEASE) $(AM_LDFLAGS)
+ 
+ libevent_la_SOURCES = $(CORE_SRC) $(EXTRAS_SRC)
+ libevent_la_LIBADD = @LTLIBOBJS@ $(SYS_LIBS)

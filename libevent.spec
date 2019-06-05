@@ -17,11 +17,9 @@ Group:		System/Libraries
 License:	BSD
 Url:		http://www.monkey.org/~provos/libevent/
 Source0:	http://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
-#Patch0:		libevent-version-info-only.diff
-#Patch1:		libevent-linkage_fix.diff
-#Patch2:		libevent-ldflags.diff
+Patch0:		libevent-2.1.10-stable-fix-linking.patch
+BuildRequires:	pkgconfig(python)
 BuildRequires:	doxygen
-BuildRequires:	libtool
 BuildRequires:	pkgconfig(openssl)
 BuildRequires:	pkgconfig(zlib)
 
@@ -68,7 +66,7 @@ This package contains a shared library for %{name}.
 Summary:	Abstract asynchronous event notification library
 Group:		System/Libraries
 
-%description -n	%{libpthreads}
+%description -n %{libpthreads}
 This package contains a shared library for %{name}.
 
 %package -n %{devname}
@@ -86,14 +84,12 @@ This package contains the development files for %{name}.
 
 %prep
 %autosetup -n %{name}-%{version}-stable -p1
-
+./autogen.sh
 # bork
 sed -i -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
 
-autoreconf -fi
-
 %build
-%configure --disable-static
+%configure
 
 %make_build
 
@@ -108,7 +104,7 @@ rm -f doxygen/man/man3/{major,minor,error,free}.3
 install -d %{buildroot}%{_mandir}/man3
 install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 
-(cd %{buildroot}/%{_mandir}/man3/; F=`ls deprecated.3*`; mv $F libevent.$F)
+(cd %{buildroot}/%{_mandir}/man3/; F=$(ls deprecated.3*); mv $F libevent.$F)
 
 %files -n %{libname}
 %{_libdir}/libevent-%{api}.so.%{major}*
