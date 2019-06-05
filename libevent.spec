@@ -1,16 +1,18 @@
-%define api	2.1
-%define major	6
-%define libname	%mklibname event %{api} %{major}
-%define	libcore %mklibname event_core %{api} %{major}
-%define	libextra %mklibname event_extra %{api} %{major}
-%define	libopenssl %mklibname event_openssl %{api} %{major}
-%define	libpthreads %mklibname event_pthreads %{api} %{major}
-%define devname	%mklibname -d event
+%define api 2.1
+%define major 6
+%define libname %mklibname event %{api} %{major}
+%define libcore %mklibname event_core %{api} %{major}
+%define libextra %mklibname event_extra %{api} %{major}
+%define libopenssl %mklibname event_openssl %{api} %{major}
+%define libpthreads %mklibname event_pthreads %{api} %{major}
+%define devname %mklibname -d event
+
+%global optflags %{optflags} -fPIC -O3
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
 Version:	2.1.10
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	BSD
 Url:		http://www.monkey.org/~provos/libevent/
@@ -29,46 +31,46 @@ libevent is meant to replace the asynchronous event loop found in event driven
 network servers. An application just needs to call event_dispatch() and can
 then add or remove events dynamically without having to change the event loop.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Abstract asynchronous event notification library
 Group:		System/Libraries
 
-%description -n	%{libname}
+%description -n %{libname}
 The libevent API provides a mechanism to execute a callback function when a
 specific event occurs on a file descriptor or after a timeout has been reached.
 libevent is meant to replace the asynchronous event loop found in event driven
 network servers. An application just needs to call event_dispatch() and can
 then add or remove events dynamically without having to change the event loop.
 
-%package -n	%{libcore}
+%package -n %{libcore}
 Summary:	Abstract asynchronous event notification library
 Group:		System/Libraries
 
-%description -n	%{libcore}
+%description -n %{libcore}
 This package contains a shared library for %{name}.
 
-%package -n	%{libextra}
+%package -n %{libextra}
 Summary:	Abstract asynchronous event notification library
 Group:		System/Libraries
 
-%description -n	%{libextra}
+%description -n %{libextra}
 This package contains a shared library for %{name}.
 
-%package -n	%{libopenssl}
+%package -n %{libopenssl}
 Summary:	Abstract asynchronous event notification library
 Group:		System/Libraries
 
-%description -n	%{libopenssl}
+%description -n %{libopenssl}
 This package contains a shared library for %{name}.
 
-%package -n	%{libpthreads}
+%package -n %{libpthreads}
 Summary:	Abstract asynchronous event notification library
 Group:		System/Libraries
 
 %description -n	%{libpthreads}
 This package contains a shared library for %{name}.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Development library and header files for the libevent library
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
@@ -78,7 +80,7 @@ Requires:	%{libopenssl} = %{version}-%{release}
 Requires:	%{libpthreads} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 
-%description -n	%{devname}
+%description -n %{devname}
 This package contains the development files for %{name}.
 
 %prep
@@ -90,7 +92,6 @@ sed -i -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
 autoreconf -fi
 
 %build
-export CFLAGS="%{optflags} -fPIC"
 %configure --disable-static
 
 %make_build
@@ -129,4 +130,3 @@ install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/*
-
