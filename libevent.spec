@@ -23,6 +23,7 @@ Source0:	http://github.com/libevent/libevent/releases/download/release-%{version
 BuildRequires:	doxygen
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(openssl)
+BuildRequires:	pkgconfig(zlib)
 
 %description
 The libevent API provides a mechanism to execute a callback function when a
