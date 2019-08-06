@@ -1,5 +1,5 @@
 %define api 2.1
-%define major 6
+%define major 7
 %define libname %mklibname event %{api} %{major}
 %define libcore %mklibname event_core %{api} %{major}
 %define libextra %mklibname event_extra %{api} %{major}
