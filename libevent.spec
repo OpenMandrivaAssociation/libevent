@@ -20,7 +20,7 @@
 %define lib32pthreads %mklib32name event_pthreads %{api} %{major}
 %define dev32name %mklib32name -d event
 
-%global optflags %{optflags} -fPIC -O3
+%global optflags %{optflags} -fPIC -O3 -lpthread
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
