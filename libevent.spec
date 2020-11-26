@@ -169,7 +169,7 @@ cd ..
 
 mkdir -p build/test
 cd build
-%configure
+%configure --enable-doxygen-doc --enable-doxygen-man
 
 %build
 %if %{with compat32}
@@ -179,7 +179,6 @@ cd build
 
 # provide man pages
 doxygen Doxyfile
-rm -f doxygen/man/man3/{major,minor,error,free}.3
 
 %install
 %if %{with compat32}
