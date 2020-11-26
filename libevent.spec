@@ -31,7 +31,7 @@ License:	BSD
 Url:		http://www.monkey.org/~provos/libevent/
 Source0:	http://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
 Patch0:         libevent-version-info-only.patch
-Patch1:         libevent-linkage_fix.diff
+Patch1:         libevent-linkage_fix.patch
 BuildRequires:	pkgconfig(python)
 BuildRequires:	doxygen
 BuildRequires:	pkgconfig(openssl)
