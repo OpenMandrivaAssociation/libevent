@@ -186,10 +186,6 @@ doxygen Doxyfile
 %endif
 %make_install -C build
 
-# provide man pages
-install -d %{buildroot}%{_mandir}/man3
-install -m0644 doxygen/man/man3/*.3 %{buildroot}%{_mandir}/man3/
-
 (cd %{buildroot}/%{_mandir}/man3/; F=$(ls deprecated.3*); mv $F libevent.$F)
 
 %files -n %{libname}
