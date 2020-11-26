@@ -185,8 +185,6 @@ doxygen Doxyfile
 %endif
 %make_install -C build
 
-(cd %{buildroot}/%{_mandir}/man3/; F=$(ls deprecated.3*); mv $F libevent.$F)
-
 %files -n %{libname}
 %{_libdir}/libevent-%{api}.so.%{major}*
 
@@ -207,7 +205,6 @@ doxygen Doxyfile
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_mandir}/man3/*
 
 %if %{with compat32}
 %files -n %{lib32name}
