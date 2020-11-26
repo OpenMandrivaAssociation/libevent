@@ -168,7 +168,7 @@ cd ..
 
 mkdir -p build/test
 cd build
-%configure --enable-doxygen-doc --enable-doxygen-man
+%configure --enable-doxygen-man
 
 %build
 %if %{with compat32}
