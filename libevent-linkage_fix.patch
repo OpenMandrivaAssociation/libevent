@@ -1,0 +1,12 @@
+diff -Nrup a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2019-05-25 23:15:35.000000000 +0200
++++ b/Makefile.am	2019-07-13 11:09:24.180046202 +0200
+@@ -252,7 +252,7 @@ NO_UNDEFINED = -no-undefined
+ MAYBE_CORE = libevent_core.la
+ else
+ NO_UNDEFINED =
+-MAYBE_CORE =
++MAYBE_CORE = libevent_core.la
+ endif
+ 
+ AM_CFLAGS = $(LIBEVENT_CFLAGS)

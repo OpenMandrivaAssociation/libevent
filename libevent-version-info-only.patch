@@ -1,0 +1,12 @@
+diff -Nrup a/Makefile.am b/Makefile.am
+--- a/Makefile.am	2019-05-25 23:15:35.000000000 +0200
++++ b/Makefile.am	2019-07-13 11:02:46.532059404 +0200
+@@ -259,7 +259,7 @@ AM_CFLAGS = $(LIBEVENT_CFLAGS)
+ AM_CPPFLAGS = -I$(srcdir)/compat -I./include -I$(srcdir)/include $(SYS_INCLUDES) $(LIBEVENT_CPPFLAGS)
+ AM_LDFLAGS = $(LIBEVENT_LDFLAGS)
+ 
+-GENERIC_LDFLAGS = -version-info $(VERSION_INFO) $(RELEASE) $(NO_UNDEFINED) $(AM_LDFLAGS)
++GENERIC_LDFLAGS = -version-info $(VERSION_INFO) $(NO_UNDEFINED) $(AM_LDFLAGS)
+ 
+ libevent_la_SOURCES = $(CORE_SRC) $(EXTRAS_SRC)
+ libevent_la_LIBADD = @LTLIBOBJS@ $(SYS_LIBS) $(SYS_CORE_LIBS)
