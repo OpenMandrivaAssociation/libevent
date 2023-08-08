@@ -5,6 +5,13 @@
 %bcond_without compat32
 %endif
 
+%if %{cross_compiling}
+# Workaround for libtool being a broken mess that
+# can't handle spaces in $CC (as in
+# CC="clang -target riscv64-openmandriva-linux-gnu")
+%define prefer_gcc 1
+%endif
+
 %define api 2.1
 %define major 7
 %define libname %mklibname event %{api} %{major}
