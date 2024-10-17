@@ -35,7 +35,7 @@ Version:	2.1.12
 Release:	3
 Group:		System/Libraries
 License:	BSD
-Url:		http://www.monkey.org/~provos/libevent/
+Url:		https://www.monkey.org/~provos/libevent/
 Source0:	http://github.com/libevent/libevent/releases/download/release-%{version}-stable/%{name}-%{version}-stable.tar.gz
 Patch1:         libevent-linkage_fix.patch
 BuildRequires:	pkgconfig(python)
