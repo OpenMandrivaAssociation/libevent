@@ -31,8 +31,8 @@
 
 Summary:	Abstract asynchronous event notification library
 Name:		libevent
-Version:	2.1.12
-Release:	4
+Version:	2.1.13
+Release:	1
 Group:		System/Libraries
 License:	BSD
 Url:		https://www.monkey.org/~provos/libevent/
@@ -165,7 +165,7 @@ This package contains the development files for %{name}.
 %endif
 
 %prep
-%autosetup -n %{name}-%{version}-stable -p1
+%autosetup -n libevent-2.1.13-stable -p1
 ./autogen.sh
 # bork
 sed -i -e "s|^GENERATE_MAN.*|GENERATE_MAN=YES|g" Doxyfile
